@@ -1,0 +1,1142 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+  
+  h1{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500; /* Bold for emphasis */
+    font-size: 5rem;
+}
+  /* Navigation Bar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1a1a1a; /* Darker theme color */
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin: 0 1rem;
+  }
+  
+  .nav-links a {
+    color: #e0e0e0; /* Light text */
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+    margin-left: 2rem;
+  }
+  
+  .nav-links a:hover {
+    color: #c19957; /* Hover color */
+  }
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* Adjust based on the distance from the text */
+    width: 0;
+    height: 2px; /* Thickness of the underline */
+    background-color: #c19957; /* Hover color for underline */
+    transition: width 0.3s ease; /* Animation duration and easing */
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%; /* Expands the underline from left to right */
+  }
+
+  
+  /* Button Styles */
+  .cta-btn {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    background-color: #C19957; /* Primary button background */
+    color: #FFFFFF; /* Primary button text color */
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .cta-btn:hover {
+    background-color: black; /* Hover background */
+    
+  }
+
+  .hero-btn{
+    font-family: 'calibri', sans-serif;
+    font-weight: 100;
+    font-size: 2rem;
+    background-color: #C19957; /* Primary button background */
+    color: #FFFFFF; /* Primary button text color */
+    padding: 0.3rem 1rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative; /* For parallax effect */
+    overflow: hidden; /* Prevent overflow */
+    opacity: 0.2;
+}
+
+  
+  .hero-content {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards; /* Animation for hero text */
+    animation-delay: 0.5s;
+  }
+  
+  .hero-content h1 {
+    color: #fff; /* White text */
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    font-weight: 10;
+    outline-color: #000;
+    
+  }
+  
+  .hero-content p {
+    color: #fff; /* White text */
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+  
+  /* About Section */
+  .about-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 2.5rem;
+    background-color: #222; /* Dark background for about */
+  }
+  
+  .about-content {
+    width: 60%; /* Adjust width as necessary */
+    font-size: 1.5rem;
+
+  }
+  .about-content h1{
+    margin-top: 2rem;
+    
+
+  }
+  
+  .about-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #C19957; /* Theme color */
+  }
+  
+  .about-content p {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    color: #fff; /* White paragraph text */
+    font-size: 1.7rem;
+    word-spacing: 0.3rem;
+  }
+  
+  .about-section img {
+    width: 305px;
+    height: 397px;
+    object-fit: cover;
+    margin-right: 80px
+  }
+  
+  /* Features Section */
+  .features {
+    padding: 5rem 2rem;
+    background-color: #222; /* Dark background */
+  }
+  
+  .features h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #C19957; /* Theme color */
+  }
+
+  .features h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #C19957; /* Theme color */
+  }
+  
+  .feature-cards {
+    display: flex;
+    justify-content: space-between; /* Align cards in a single row */
+    flex-wrap: nowrap; /* Ensure cards stay in one row */
+  }
+  
+
+  .feature-card{
+    background-color: #333; /* Dark card */
+    padding: 3rem;
+    border-radius: 10px;
+    word-spacing: 0.3rem;
+    margin: 1rem;
+    text-align: left;
+    flex: 1; /* Allow cards to grow evenly */
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #fff;
+    
+  }
+  .features p {
+    text-align: left;
+    margin-bottom: 0rem;
+    font-size: 1rem;
+    color: white; /* Theme color */
+    word-spacing: 0.rem;
+
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(193, 153, 87, 0.5);
+    color: #C19957; /* Card hover color */
+  }
+  
+  
+  .feature-icon {
+    max-width: 300px;
+    margin-bottom: 1rem;
+  }
+  
+  /* How It Works Section */
+  .how-it-works {
+    padding: 5rem 2rem;
+    background-color: #222; /* Dark background */
+  }
+  
+  .how-it-works h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #C19957; /* Theme color */
+  }
+  
+  .how-it-works-steps {
+    display: flex;
+    justify-content: space-between; /* Align steps in a single row */
+    flex-wrap: wrap; /* Ensure steps stay in one row */
+  }
+  
+  .step {
+    background-color: #333; /* Dark step background */
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 1rem;
+    text-align: center;
+    flex: 1; /* Allow steps to grow evenly */
+  }
+  
+  /* Camera Feed Section */
+  .camera-feed {
+    padding: 5rem 2rem;
+    border-radius: 8px;
+    background-color: #222; /* Dark background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  
+  #camera-container {
+    position: relative;
+  }
+  
+  #video-feed {
+    width: 100%;
+    max-width: 800px;
+    border: 2px solid #C19957; /* Border color */
+    border-radius: 10px;
+  }
+  
+  .alert-system {
+    background-color: #121212;
+    padding: 5rem 2rem;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.alert-system h2 {
+    color: #C19957;
+    margin-bottom: 1rem;
+}
+
+#alert-config-form {
+    background: #222;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    max-width: 500px; /* Limit form width */
+    margin: 0 auto; /* Center the form */
+}
+
+#alert-config-form label {
+    color: #fff;
+}
+
+#alert-config-form input {
+    padding: 0.5rem;
+    border: 1px solid #555;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#alert-config-form button {
+    background-color: #C19957;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#alert-config-form button:hover {
+    background-color: black; /* Button hover color */
+}
+
+  
+.hidden {
+  display: none; /* This keeps hidden elements from showing */
+}
+  
+  /* Contact Section */
+  .contact-section {
+    background-color: #000;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.contact-section h2 {
+    color: #C19957;
+    margin-bottom: 1rem;
+}
+
+.contact-section p {
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+}
+
+.contact-form {
+    background: #222;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    max-width: 600px; /* Optional: Limit form width */
+    margin: 0 auto; /* Center the form */
+}
+
+.contact-form label {
+    color: #fff;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.5rem;
+    border: 1px solid #555;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.contact-form button {
+    background-color: #C19957;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: black; /* Optional: Button hover color */
+}
+
+  
+  .map {
+    flex: 1;
+  }
+  
+/* Footer */
+.site-footer {
+  background-color: #26272b;
+  padding: 20px 0 20px;
+  font-size: 15px;
+  line-height: 24px;
+  color: #737373;
+}
+
+.site-footer hr {
+  border-top-color: #bbb;
+  opacity: 0.5;
+}
+
+.site-footer h6 {
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  letter-spacing: 2px;
+}
+
+.site-footer a {
+  color: #737373;
+}
+
+.site-footer a:hover {
+  color: #3366cc;
+  text-decoration: none;
+}
+
+.footer-links {
+  padding-left: 0;
+  list-style: none;
+}
+
+.footer-links li {
+  display: block;
+}
+
+.footer-links a {
+  color: #737373;
+}
+
+.footer-links a:hover {
+  color: #3366cc;
+  text-decoration: none;
+}
+
+/* Flexbox Layout for Footer */
+.site-footer .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Ensure columns are spaced evenly */
+  gap: 10px; /* Adds space between the columns */
+}
+
+/* About Section - Takes up 50% width on large screens */
+.site-footer .col-sm-12.col-md-6 {
+  flex: 1 1 40%;
+}
+
+/* Categories and Quick Links - Each takes up 25% width on large screens */
+.site-footer .col-xs-6.col-md-3 {
+  flex: 1 1 25%;
+}
+
+.site-footer .social-icons {
+  text-align: right;
+}
+
+.site-footer .social-icons a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 6px;
+  border-radius: 100%;
+  background-color: #33353d;
+}
+
+.copyright-text {
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .site-footer [class^=col-] {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-footer .row {
+    flex-direction: column; /* Stack columns on small screens */
+  }
+
+  .site-footer .copyright-text,
+  .site-footer .social-icons {
+    text-align: center;
+  }
+}
+
+.social-icons {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.social-icons a {
+  background-color: #eceeef;
+  font-size: 16px;
+  display: inline-block;
+  line-height: 44px;
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  margin-right: 8px;
+  border-radius: 100%;
+  transition: all 0.2s linear;
+}
+
+.social-icons a:hover {
+  background-color: #29aafe;
+}
+
+/* Hover effects for social icons */
+.social-icons a.facebook:hover {
+  background-color: #3b5998;
+}
+
+.social-icons a.twitter:hover {
+  background-color: #00aced;
+}
+
+.social-icons a.linkedin:hover {
+  background-color: #007bb6;
+}
+
+.social-icons a.dribbble:hover {
+  background-color: #ea4c89;
+}
+
+@media (max-width:767px)
+{
+  .social-icons li.title
+  {
+    display:block;
+    margin-right:0;
+    font-weight:600
+  }
+}
+  
+  /* Animations */
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+  
+  @keyframes fadeInUp {
+      from {
+          opacity: 0;
+          transform: translateY(20px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+  
+/* Fade Up Animation */
+/* Fade Up Animation */
+.fade-up {
+    opacity: 0; /* Hidden by default */
+    transform: translateY(40px); /* Move down slightly */
+    transition: opacity 3s ease-out, transform 2s ease-out; /* Increased to 1 second */
+}
+
+.fade-up.active {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+}
+
+
+/* Modal Styles */
+/* Modal Container */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000; /* Ensure it's on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scrolling if needed */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark overlay */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #1a1a1a; /* Match the dark theme of your site */
+  color: #e0e0e0;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+  animation: fadeIn 0.5s;
+  box-shadow: 0px 4px 20px rgba(193, 153, 87, 0.4); /* Glow effect */
+}
+
+/* Close Button */
+.close-btn {
+  color: #c19957; /* Use the theme's color */
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #fff; /* Lighten on hover */
+}
+
+/* Form Inputs */
+.modal-content input[type="text"],
+.modal-content input[type="Email"],
+.modal-content input[type="password"] {
+  width: 100%;
+  padding: 0.7rem;
+  margin: 1rem 0;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #222;
+  color: #e0e0e0;
+  outline: none;
+  font-size: 1rem;
+}
+
+/* Submit Button */
+.modal-content button {
+  background-color: #C19957; /* Button color */
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+  background-color: #AF8946;
+}
+
+/* Signup/Other Links */
+.modal-content .modal-link {
+  display: block;
+  margin: 1rem 0;
+  color: #c19957;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.modal-content .modal-link:hover {
+  color: #fff;
+}
+
+.modal-content a {
+  color: #fff;
+}
+
+.modal-content a:hover {
+  color: #c19957;
+}
+
+
+/* Profile*/
+
+/* Profile Icon Styles */
+.profile-menu {
+  position: relative;
+  text-align: center;
+}
+
+
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Dropdown Menu Styles */
+/* Dropdown Menu Styles */
+.dropdown-menu {
+  position:absolute;
+  top: 70px; /* Adjust based on navbar height */
+  right: 0;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 999;
+  margin-right: -5.0rem;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px; /* Position above the dropdown menu */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 10px 10px 10px; /* Width of the arrow */
+  border-style: solid;
+  border-color: transparent transparent #1a1a1a transparent; /* Arrow color */
+  width: 0;
+  height: 0;
+  z-index: 1000;
+}
+.dropdown-menu.hidden {
+  display: none; /* Maintain hidden state */
+}
+
+
+
+.dropdown-item {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+  background-color: #333;
+}
+
+
+
+.flashes {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  list-style: none;
+  z-index: 1000;
+}
+
+.flashes .success {
+  color: white !important;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.success-message {
+  background-color: #28a745; /* Green background */
+  color: white !important; /* White text */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+}
+.danger-message {
+  background-color: red; /* Green background */
+  color: white !important; /* White text */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.success {
+  background-color: #28a745; /* Green background */
+  color: white !important; /* White text */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Error message: Red background with white text */
+.danger {
+  background-color: #dc3545; /* Red background */
+  color: white !important; /* White text */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+}
+
+
+
+/* image data gathering seciton styling */
+/* General Section Styling */
+.image-data-gathering {
+  text-align: center;
+  padding: 2rem;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  color: #fff;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.image-data-gathering h2 {
+  font-size: 2rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+}
+
+.image-data-gathering .description {
+  font-size: 1.2rem;
+  color: #c19957;
+  margin-bottom: 2rem;
+}
+
+/* Data Gathering Options */
+.data-options {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Person Name Input */
+#person-input {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#person-input label {
+  color: #e0e0e0;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#person-input input {
+  padding: 0.5rem;
+  width: 50%;
+  max-width: 300px;
+  border-radius: 5px;
+  border: 1px solid #c19957;
+  margin-bottom: 1rem;
+}
+
+/* Camera Feed Section */
+#camera-feed-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#camera-feed-section h3 {
+  font-size: 1.5rem;
+  color: #c19957;
+  margin-bottom: 1rem;
+}
+
+#camera-feed-section video {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border: 2px solid #c19957;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Upload Section */
+/* Upload Section */
+#upload-section {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background-color: #222;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#upload-section h3 {
+  font-size: 1.5rem;
+  color: #c19957;
+  margin-bottom: 1rem;
+}
+
+#upload-section input[type="file"] {
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  border: 1px solid #c19957;
+  background-color: #333;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px;
+  cursor: pointer;
+}
+
+#upload-section input[type="file"]::-webkit-file-upload-button {
+  background-color: #c19957;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+#upload-section input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: #e0e0e0;
+  color: #1a1a1a;
+}
+
+/* Upload Button */
+#submit-images-btn {
+  background-color: #c19957;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease;
+}
+
+#submit-images-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  .data-options {
+    flex-direction: column;
+  }
+
+  #person-input input {
+    width: 80%;
+  }
+}
+
+#detection-camera-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#detection-video-feed {
+  width: 100%;
+  max-width: 800px;
+  border: 2px solid #C19957; /* Border color */
+  border-radius: 10px;  /* Optional: sets a background to help identify if video fails to load */
+}
+
+/* Modal styles */
+/* Modal styles */
+.modal2 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+}
+
+/* Modal content */
+.modal2-content {
+  background-color: #1a1a1a;
+  margin: 5% auto; /* Center the modal */
+  padding: 30px;
+  border: 1px solid #888;
+  width: 60%; /* Adjusted width for larger size */
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(193, 153, 87, 0.4);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.5s;
+}
+
+
+
+/* Close button */
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Navigation bar styles */
+/* Navigation bar styles */
+.dashboard-nav {
+  margin: 30px 0;
+}
+
+.dashboard-nav ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0;
+  display: flex;
+  justify-content: space-around; /* Space items evenly with less gap */
+  gap: 10px; /* Add a small gap between buttons */
+}
+
+.dashboard-nav li {
+  flex: 1; /* Allow links to stretch */
+}
+
+.dashboard-nav a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #C19957; /* Base color */
+  padding: 10px 15px; /* Adjusted padding for a compact look */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  text-align: center; /* Center text */
+}
+
+.dashboard-nav a.active, .dashboard-nav a:hover {
+  background-color: #A57E46; /* Darker shade on hover */
+}
+
+/* Additional styles for the hover effect */
+.dashboard-nav a:hover {
+  background-color: #A57E46; /* Darker shade on hover */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Slight shadow effect on hover */
+}
+
+
+/* Family details styles */
+.family-details {
+  display: flex;
+  flex-wrap: wrap; /* Wrap to the next line */
+  justify-content: space-between; /* Space items evenly */
+  margin-top: 20px; /* Add margin for spacing */
+}
+
+.family-member {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  width: calc(33% - 20px); /* Three items per row with space */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.family-member img {
+  width: 150px; /* Fixed width for images */
+  height: 150px; /* Fixed height for images */
+  border-radius: 50%; /* Circular image */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+}
+
+.family-member p {
+  margin-top: 10px; /* Add space between image and name */
+  font-size: 16px; /* Adjust font size */
+  color: white; /* Darker text color */
+}
+
+/* Settings Section Styles */
+.settings-section {
+  margin-top: 20px; /* Add space above settings */
+  background-color: #1a1a1a; /* Match modal background */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.settings-options {
+  display: flex;
+  justify-content: space-around; /* Space buttons evenly */
+  margin-bottom: 20px;
+}
+
+.settings-options button {
+  background-color: #C19957; /* Button color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.settings-options button:hover {
+  background-color: #A57E46; /* Darker shade on hover */
+}
+
+/* Form styles */
+.hidden {
+  display: none; /* Hide elements by default */
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%; /* Full width */
+  padding: 10px;
+  margin: 10px 0; /* Space between inputs */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button-dash {
+  background-color: #C19957; /* Button color */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Space above buttons */
+}
+
+.button-dash:hover {
+  background-color: #A57E46; /* Darker shade on hover */
+}

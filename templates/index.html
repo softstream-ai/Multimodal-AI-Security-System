@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Powered Security System</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Use url_for to link to static files -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <script
+      defer
+      src="{{ url_for('static', filename='js/scripts.js') }}"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+     
+    <nav class="navbar">
+      <div class="logo">AI Security.SoftStream.tech</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Try it now Button (Visible when user is not logged in) -->
+      <button class="cta-btn" id="tryItNow" onclick="openLoginModal()">
+        Try it now
+      </button>
+      
+
+      <!-- Profile Menu (Visible when user is logged in) -->
+      <!-- Profile Menu (Visible when user is logged in) -->
+      <!-- Profile Menu (Visible when user is logged in) -->
+      <!-- Profile Menu (Visible when user is logged in) -->
+      <div class="profile-menu hidden" id="profileMenu">
+        <img
+          src="static/images/profile icon.png"
+          alt="Profile"
+          class="profile-icon"
+          id="profileIcon"
+        />
+        <div class="dropdown-menu hidden" id="dropdownMenu">
+          <div class="dropdown-item username">username</div>
+          <a href="#" class="dropdown-item" id="dashboardLink">Dashboard</a>
+
+          <!-- Add this line for displaying username -->
+          <a href="/logout" class="dropdown-item" id="logoutBtn">Logout</a>
+        </div>
+      </div>
+    
+      <div
+        class="burger"
+        aria-label="Toggle navigation"
+        role="button"
+        tabindex="0"
+      >
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+
+<!-- Dashboard Modal -->
+ <!-- Dashboard Modal -->
+ <div id="existingModal" class="modal2 hidden">
+  <div class="modal2-content">
+      <span class="close-button" id="closeExistingModal">&times;</span>
+      <h2>Dashboard</h2>
+      <nav class="dashboard-nav">
+          <ul>
+              <li><a href="#family" class="active" id="familyDetailsLink">Family Members</a></li>
+              <li><a href="#settings" id="settingsLink">Settings</a></li>
+          </ul>
+      </nav>
+      
+      <!-- Family Member Details -->
+      <div id="familyDetails" class="family-details">Loading family members...</div>
+
+      <!-- Settings Section -->
+      <div id="settings" class="settings-section hidden">
+          <h4>Settings</h4>
+          <div class="settings-options">
+              <button id="changeUsernameButton">Change Username</button>
+              <button id="changePasswordButton">Change Password</button>
+          </div>
+          <div id="usernameChangeForm" class="hidden">
+            <h5>Enter New Username</h5>
+            <input type="text" id="newUsername" placeholder="New Username">
+            <input type="password" id="loginPassword" placeholder="Login Password">
+            <button id="submitUsernameChange" class="cta-btn">Submit</button><br>
+            <div id="usernameChangeMessage"></div> <!-- Success/Error message container -->
+        </div>
+        
+        <div id="passwordChangeForm" class="hidden">
+            <h5>Change Password</h5>
+            <input type="password" id="currentPassword" placeholder="Current Password">
+            <input type="password" id="newPassword" placeholder="New Password">
+            <button id="submitPasswordChange" class="cta-btn">Submit</button><br>
+            <div id="passwordChangeMessage"></div> <!-- Success/Error message container -->
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+    <!-- Flash messages -->
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+
+    <!-- Login/Signup Modal -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 id="modal-title">Login</h2>
+
+        <!-- Login Form -->
+        <form id="loginForm" action="/login" method="POST">
+          <div id="login-fields">
+            <input type="email" name="email" placeholder="Email" required />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+            <button type="submit" class="cta-btn">Login</button>
+          </div>
+        </form>
+
+        <p id="toggle-text">
+          Don't have an account? <a href="#" id="toggle-form">Sign up</a>
+        </p>
+
+        <!-- Signup Form (hidden by default) -->
+        <form
+          id="signupForm"
+          action="/signup"
+          method="POST"
+          style="display: none"
+        >
+          <div id="signup-fields">
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              required
+            />
+            <input type="email" name="email" placeholder="Email" required />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+            <input
+              type="password"
+              name="confirm_password"
+              placeholder="Confirm Password"
+              required
+            />
+            <button type="submit" class="cta-btn">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="hero fade-up"
+      style="background-image: url('{{ url_for('static', filename='images/hero_background.png') }}');"
+    >
+      <div class="hero-content">
+        <h1>Advanced Multimodal <br />AI Security System</h1>
+        <p>Protect your property with intelligent solutions</p>
+        <a href="#features" class="hero-btn">Explore Features</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section fade-up">
+      <div class="about-content">
+        <h1>Revolutionizing security</h1>
+        <h2>AI-driven solutions for safety</h2>
+        <p>
+          At AiSecurity.SoftStream.tech, we are committed to enhancing
+          safetywith our Multimodal AI-Powered Security System. This innovative
+          solution employs advanced drone detection and intruder recognition
+          technology to provide unparalleled protection for both residential and
+          commercial properties. By harnessing cutting-edge AI algorithms like
+          YOLO and FaceNet, our system monitors your environment in real time,
+          distinguishing between known individuals and potential threats.
+          Instant alerts via SMS or email ensure that you stay informed,
+          empowering you with peace of mind in an ever-evolving security
+          landscape.
+        </p>
+      </div>
+      <div class="about-image">
+        <img
+          src="static\images\about.jpeg"
+          alt="About Image"
+          width="305"
+          height="397"
+        />
+      </div>
+    </section>
+    
+
+    <!-- Features Section -->
+    <section
+      id="features"
+      class="features fade-up"
+      style="background-color: #121212"
+    >
+      <h2>Why Our System Stands Out</h2>
+      <div class="feature-cards">
+        <div class="feature-card">
+          <img
+            src="static\images\drone.jpeg"
+            alt="Drone Detection"
+            class="feature-icon"
+            width="305"
+            height="225"
+          />
+          <h3>Advance Drone Detection</h3>
+          <p>
+            Our Advanced Drone Detection technology empowers your security
+            system to identify unauthorized drones in real time. Utilizing YOLO,
+            a powerful AI algorithm, the system analyzes aerial activity around
+            your property. When a suspicious drone is detected, it immediately
+            activates alerts, ensuring you are always aware of potential
+            threats. This proactive approach means you can act quickly to
+            safeguard your space. Whether it's at home or in a commercial
+            setting, this feature enhances your security, providing the
+            assurance that your environment remains protected from aerial
+            intrusions.
+          </p>
+        </div>
+        <div class="feature-card">
+          <img
+            src="static\images\intruder.jpg"
+            alt="Intruder Recognition"
+            class="feature-icon"
+            width="305"
+            height="225"
+          />
+          <h3>Intruder recognition system</h3>
+          <p>
+            Facial recognition and anomaly detection for intruder
+            identificationThe Intruder Recognition System harnesses the power of
+            FaceNet technology to provide reliable identification of individuals
+            within your environment. By comparing faces against a pre-existing
+            family database, it distinguishes between familiar faces and
+            potential intruders. This capability not only enhances security but
+            also builds a sense of familiarity and comfort for residents. In
+            case an unknown individual is detected, the system promptly sends
+            alerts via SMS or email, ensuring you are always informed. This
+            feature significantly boosts your security measures, making it an
+            essential part of your safety strategy.
+          </p>
+        </div>
+        <div class="feature-card">
+          <img
+            src="static\images\alert.jpg"
+            alt="Real-Time Alerts"
+            class="feature-icon"
+            width="305"
+            height="225"
+          />
+          <h3>Real-Time Alerts and notificaion</h3>
+          <p>
+            Our Real-Time Alerts and Notifications feature keeps you informed of
+            any potential security threats as they occur. The system is designed
+            to instantly send alerts via SMS or email, ensuring you never miss
+            critical updates. Whether it’s an unidentified drone hovering above
+            or an unknown individual approaching your property, you will receive
+            immediate notifications to take appropriate action. This timely
+            communication enhances your ability to respond to threats
+            effectively, providing greater peace of mind. With this feature, you
+            can rest easy knowing that your security system is always working
+            for you.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works fade-up">
+      <h2>System Overview: How It Works</h2>
+      <div class="how-it-works-steps">
+        <div class="step">
+          <h3>Step 1: Data Collection & Training</h3>
+          <p>Collecting and training data to enhance detection capabilities.</p>
+        </div>
+        <div class="step">
+          <h3>Step 2: Model Training</h3>
+          <p>Training models with advanced algorithms for accuracy.</p>
+        </div>
+        <div class="step">
+          <h3>Step 3: Integrating Camera Feeds</h3>
+          <p>Combining multiple camera feeds for comprehensive coverage.</p>
+        </div>
+        <div class="step">
+          <h3>Step 4: Alert System Setup</h3>
+          <p>Configuring SMS and email alerts for immediate notifications.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="image-data-gathering" class="image-data-gathering fade-up hidden">
+      <h2>Image Data Gathering</h2>
+      <p class="description">Select Data Gathering Type</p>
+    
+      <!-- Choose Capture or Upload -->
+      <div class="data-options">
+        <button id="use-camera" class="cta-btn">Use Camera</button><br>
+        <button id="upload-images" class="cta-btn">Upload Images</button>
+      </div>
+    
+      <!-- Person Name Input -->
+      <div id="person-input" class="hidden">
+        <label for="person-name">Enter Family Member Name:</label>
+        <input type="text" id="person-name" placeholder="Family member name">
+      </div>
+    
+      <!-- Camera Feed Section for Live Capture -->
+      <!-- Video Feed and Capture Button -->
+<div id="camera-feed-section" class="camera-feed hidden">
+  <h3>Live Camera Feed</h3>
+  <video id="video-feed" autoplay></video><br>
+  <button id="capture-image-btn" class="cta-btn">Capture Image</button>
+  <button id="stop-camera-btn" class="cta-btn">Stop Camera</button><br><br>
+  <div id="capture-response-message" class="hidden"></div> <!-- Message container -->
+</div>
+
+    
+    
+      <!-- Upload Section for Image Upload -->
+      <div id="upload-section" class="hidden">
+        <h3>Upload Images</h3>
+        <input type="file" id="image-files" multiple><br>
+        <div class="button-row">
+          <button id="submit-images-btn" class="cta-btn">Submit</button>
+          <button id="cancel-upload-btn" class="cta-btn">Cancel</button>
+          <button id="add-new-member-btn" class="cta-btn">Refresh</button>
+        </div>
+        <br>
+        <div id="upload-response-message" class="hidden"></div>
+      </div>
+    </section>
+    
+    
+
+    <!-- Alert System Section -->
+    <section
+      id="alert-system-id"
+      class="alert-system fade-up hidden"
+      style="
+        background-color: #121212;
+        padding: 5rem 2rem;
+        text-align: center;
+        border-radius: 10px;
+      "
+    >
+      <h2 style="color: #c19957; margin-bottom: 1rem">
+        Alert System Configuration
+      </h2>
+      <form
+        id="alert-config-form"
+        style="
+          background: #222;
+          padding: 2rem;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+          max-width: 500px;
+          margin: 0 auto;
+        "
+      >
+        <label for="sender-email" style="color: #fff">Sender Email *</label>
+        <input
+          type="email"
+          id="sender-email"
+          name="sender-email"
+          placeholder="Your email"
+          required
+          style="
+            padding: 0.5rem;
+            border: 1px solid #555;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 1rem;
+          "
+        />
+
+        <label for="sender-password" style="color: #fff"
+          >Sender Password *</label
+        >
+        <input
+          type="password"
+          id="sender-password"
+          name="sender-password"
+          placeholder="Your password"
+          required
+          style="
+            padding: 0.5rem;
+            border: 1px solid #555;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 1rem;
+          "
+        />
+
+        <label for="receiver-email" style="color: #fff">Receiver Email *</label>
+        <input
+          type="email"
+          id="receiver-email"
+          name="receiver-email"
+          placeholder="Receiver's email"
+          required
+          style="
+            padding: 0.5rem;
+            border: 1px solid #555;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 1rem;
+          "
+        />
+
+        <button
+          type="submit"
+          class="cta-btn"
+          style="
+            background-color: #c19957;
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+          "
+        >
+          Configure Alert System
+        </button>
+        <div id="response-message" style="margin-top: 1rem; color: #c19957;"></div>
+
+      </form>
+    </section>
+
+  <!-- Detection Camera Feed Section -->
+<section id="detection-camera-feed" class="camera-feed fade-up hidden">
+  <h2>Live Detection Feed</h2>
+  <div id="detection-camera-container">
+      <video id="detection-video-feed" autoplay></video>
+      <canvas id="detection-overlay" style="position: absolute; top: 0; left: 0;"></canvas>
+    
+  </div><br>
+  <button id="start-detection" class="cta-btn">Start Detection</button>
+  <button id="stop-detection" class="cta-btn hidden">Stop Detection</button><br>
+  <div id="alert-message-response" class="alert hidden"></div>
+</section>
+
+
+
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="contact-section fade-up"
+      style="background-color: #000; padding: 5rem 2rem; text-align: center"
+    >
+      <h2 style="color: #c19957; margin-bottom: 1rem">Get in Touch</h2>
+      <p style="color: #e0e0e0; margin-bottom: 2rem">
+        We're here to assist you!
+      </p>
+      <div class="contact-wrapper">
+        <form
+          class="contact-form"
+          style="
+            background: #222;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+          "
+        >
+          <label for="name" style="color: #fff">Name *</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Jane Smith"
+            required
+            style="
+              padding: 0.5rem;
+              border: 1px solid #555;
+              border-radius: 5px;
+              width: 100%;
+              margin-bottom: 1rem;
+            "
+          />
+
+          <label for="email" style="color: #fff">Email address *</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="email@website.com"
+            required
+            style="
+              padding: 0.5rem;
+              border: 1px solid #555;
+              border-radius: 5px;
+              width: 100%;
+              margin-bottom: 1rem;
+            "
+          />
+
+          <label for="phone" style="color: #fff">Phone number *</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="555-555-5555"
+            required
+            style="
+              padding: 0.5rem;
+              border: 1px solid #555;
+              border-radius: 5px;
+              width: 100%;
+              margin-bottom: 1rem;
+            "
+          />
+
+          <label for="message" style="color: #fff">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Your message here..."
+            required
+            style="
+              padding: 0.5rem;
+              border: 1px solid #555;
+              border-radius: 5px;
+              width: 100%;
+              margin-bottom: 1rem;
+            "
+          ></textarea>
+
+          <label style="color: #fff">
+            <input type="checkbox" required style="margin-right: 0.5rem" />
+            I allow this website to store my submission so they can respond to
+            my inquiry. *<br /><br />
+          </label>
+
+          <button
+            type="submit"
+            class="cta-btn"
+            style="
+              background-color: #c19957;
+              color: #fff;
+              padding: 0.7rem 1.5rem;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              transition: background-color 0.3s;
+            "
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">
+              Softstream.ai's AI solutions transformed our business. Their
+              expertise in NLP, ML, and CV is unparalleled. We highly recommend
+              their services..
+            </p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Categories</h6>
+            <ul class="footer-links">
+              <li><a href="#">Computer Vision</a></li>
+              <li><a href="#">AI Chatbots</a></li>
+              <li><a href="#">NLP</a></li>
+              <li><a href="#">Machine Learning</a></li>
+              <li><a href="#">Python</a></li>
+              <li><a href="#">GenAi</a></li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#">Contribute</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">
+              Copyright &copy; 2024 All Rights Reserved by
+              <a href="#">SoftStream.tech</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li>
+                <a class="facebook" href="static\images\communication.png"
+                  ><i class="fa fa-facebook"></i
+                ></a>
+              </li>
+              <li>
+                <a class="twitter" href="static\images\twitter.png"
+                  ><i class="fa fa-twitter"></i
+                ></a>
+              </li>
+              <li>
+                <a class="linkedin" href="static\images\linkedin.png"
+                  ><i class="fa fa-linkedin"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
